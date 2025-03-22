@@ -1,3 +1,4 @@
+using eCommerce.API.Middlewares;
 using eCommerce.Infrastructure;
 using eCommerce.Core;
 var builder = WebApplication.CreateBuilder(args);
@@ -11,7 +12,7 @@ builder.Services.AddControllers();
 
 //Build the web app
 var app = builder.Build();
-
+app.UseExceptionHandlingMiddleware();
 //Routing
 app.UseRouting();
 
