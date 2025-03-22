@@ -2,7 +2,6 @@
 using eCommerce.Core.Entities;
 using eCommerce.Core.RepositoryContracts;
 using eCommerce.Core.ServiceContract;
-using System.Threading.Tasks;
 
 namespace eCommerce.Core.Services;
 
@@ -17,7 +16,7 @@ internal class UserService : IUserService
     }
     public async Task<AuthenticationResponse?> Login(LoginRequest loginRequest)
     {
-        ApplicationUser user = await _userRepository.GetUserByEmailAndPassword(loginRequest.Email, loginRequest.Password);
+        ApplicationUser? user = await _userRepository.GetUserByEmailAndPassword(loginRequest.Email, loginRequest.Password);
         if (user == null)
         {
             return null;
