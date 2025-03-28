@@ -23,33 +23,13 @@ internal class UserService : IUserService
         {
             return null;
         }
-        /*return new AuthenticationResponse
-        (
-            user.UserID,
-            user.Email,
-            user.PersonName,
-            user.Gender,
-            "token",
-            true
-        );*/
-
+        
         return _mapper.Map<AuthenticationResponse>(user) with 
             { Success = true, Token = "token"  };
     }
 
     public async Task<AuthenticationResponse?> Register(RegisterRequest registerRequest)
     {
-        //Create a application user object from the RegisterRequest
-        /*
-        ApplicationUser user = new ApplicationUser
-        {
-            Email = registerRequest.Email,
-            Password = registerRequest.Password,
-            PersonName = registerRequest.PersonName,
-            Gender = GenderOptions.Male.ToString()
-
-        };
-        */
         ApplicationUser user = _mapper.Map<ApplicationUser>(registerRequest);        
         ApplicationUser? registeredUser = await _userRepository.AddUser(user);
         if (registeredUser == null)
