@@ -5,10 +5,6 @@ public record RegisterRequest(
      string? Password,
      string? PersonName,
      GenderOptions Gender
-    )
-{
-    //Parameterless contructor
-    public RegisterRequest() : this(default,default, default, default) { }
-}
+    );
   
 

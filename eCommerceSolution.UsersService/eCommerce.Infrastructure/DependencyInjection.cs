@@ -16,7 +16,7 @@ public static class DependencyInjection
     public static IServiceCollection AddInfrastructure(this IServiceCollection services)
     {
         services.AddSingleton<IUserRepository,UserRepository>();
-        services.AddSingleton<DapperDbContext>();
+        services.AddSingleton<DapperDbContext>();        
         return services;
     
     }
