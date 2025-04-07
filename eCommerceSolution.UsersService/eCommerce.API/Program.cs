@@ -31,13 +31,14 @@ builder.Services.AddSwaggerGen();
 //Add cors services
 builder.Services.AddCors(options =>
 {
-    options.AddDefaultPolicy(builder =>
+    options.AddPolicy("AllowSpecificOrigin", policy =>
     {
-        builder.WithOrigins("http://localhost:4200")
-               .AllowAnyMethod()
-               .AllowAnyHeader();
+        policy.WithOrigins("http://localhost:4200")
+              .AllowAnyHeader()
+              .AllowAnyMethod();
     });
 });
+
 
 //Build the web app
 var app = builder.Build();
@@ -48,6 +49,8 @@ app.UseRouting();
 app.UseSwagger();
 //add swageger UI
 app.UseSwaggerUI();
+
+app.UseCors("AllowSpecificOrigin");
 
 app.UseAuthentication();    
 app.UseAuthorization();
