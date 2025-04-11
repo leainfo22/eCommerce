@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace DataAccessLibrary
+
+namespace eCommerce.ProductsService.DataAccessLayer;
+
+public static class DependencyInjection
 {
-    class DependencyInjection
+    public static IServiceCollection AddDataAccessLayer(this IServiceCollection services)
     {
-    }
+        return services;
+    } 
 }
+

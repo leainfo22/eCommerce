@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace BusinessLogicLayer
+
+namespace eCommerce.ProductsService.BusinessLogicLayer;
+
+public static class DependencyInjection
 {
-    class DependencyInjection
+    public static IServiceCollection AddBusinessLogicLayer(this IServiceCollection services)
     {
+        return services;
     }
 }
+

@@ -1,6 +1,27 @@
-var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
+using eCommerce.ProductsService.BusinessLogicLayer;
+using eCommerce.ProductsService.DataAccessLayer;
+using FluentValidation.AspNetCore;
+using ProductMicroService.API;
 
-app.MapGet("/", () => "Hello World!");
+var builder = WebApplication.CreateBuilder(args);
+
+
+// Add DAL and BLL to the container.
+builder.Services.AddDataAccessLayer();
+builder.Services.AddBusinessLogicLayer();
+// Add services to the container.
+
+builder.Services.AddControllers();
+builder.Services.AddFluentValidationAutoValidation();
+
+var app = builder.Build();
+app.UseExceptionHandlingMiddleware();  
+app.UseRouting();
+
+//Auth
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.MapControllers();
 
 app.Run();
