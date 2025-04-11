@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 // Add DAL and BLL to the container.
-builder.Services.AddDataAccessLayer();
+builder.Services.AddDataAccessLayer(builder.Configuration);
 builder.Services.AddBusinessLogicLayer();
 // Add services to the container.
 
